@@ -44,12 +44,14 @@ const clientInfoList = document.querySelectorAll('.client__right-info');
 const clientImgItem = document.querySelector('.client__right-img img');
 const clientImgList = [
     './images/product.png',
-    './images/product.png',
+    'http://3.bp.blogspot.com/_E5z0Iw_Z9kQ/Sr2PgjWNiGI/AAAAAAAADxA/tybe11kmnIM/s320/P1030159.JPG',
     './images/product.png',
     './images/product.png',
     './images/product.png',
     './images/product.png',
 ]
+
+currentIndex = 0;
 
 for (let i = 0; i < clientList.length; i++) {
     const el = clientList[i];
@@ -60,7 +62,14 @@ for (let i = 0; i < clientList.length; i++) {
         el.classList.add('active')
         clientAboutList[i].classList.add('active');
         clientInfoList[i].classList.add('active');
-        clientImgItem.setAttribute('src', clientImgList[i]);
+        if (currentIndex != i) {
+            clientImgItem.classList.add('active');
+            clientImgItem.setAttribute('src', clientImgList[i]);
+            setTimeout(function () {
+                clientImgItem.classList.remove('active');
+            }, 200);
+        }
+        currentIndex = i;
     })
 }
 
