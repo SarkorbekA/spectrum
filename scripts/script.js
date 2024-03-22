@@ -85,6 +85,30 @@ for (let i = 0; i < navList.length; i++) {
     })
 }
 
+
+let lastScrollTop = 0;
+let delta = 50; // Расстояние, на котором будет реагировать хедер
+
+window.addEventListener('scroll', function () {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (Math.abs(lastScrollTop - currentScroll) <= delta) {
+        return; // Не делаем ничего, если скролл недостаточный
+    }
+
+    if (currentScroll > lastScrollTop) {
+        // Скролл вниз
+        // document.querySelector('.header').classList.add('active');
+        document.querySelector('.header-box').classList.add('active');
+    } else {
+        // Скролл вверх
+        // document.querySelector('.header').classList.remove('active');
+        document.querySelector('.header-box').classList.remove('active');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
 // const langBtn = document.querySelector('.header__lang-title');
 // const langList = document.querySelector('.header__lang-list');
 

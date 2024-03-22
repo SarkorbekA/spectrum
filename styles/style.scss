@@ -99,11 +99,34 @@ body.active {
 }
 
 .header {
-    padding: 50px 0 150px;
+    padding: 115px 0 150px;
     overflow: hidden;
+    @media (max-width: 576px) {
+        padding: 50px 0 80px;
+    }
     & > .container {
         position: relative;
         z-index: 10;
+    }
+    &-box {
+        width: 100%;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        transition: top 0.3s ease-in-out; /* Добавить плавный эффект */
+        -webkit-backdrop-filter: blur(35px);
+        backdrop-filter: blur(35px);
+        background: var(--light-white);
+        &.active {
+            top: -125px;
+            @media (max-width: 1175px) {
+                top: -94px;
+            }
+        }
+        padding: 30px 0 20px;
     }
     &-logo {
         color: var(--white);
@@ -132,7 +155,7 @@ body.active {
             left: 0;
             transform: translateX(-100%);
             top: 0;
-            height: 100%;
+            height: 100vh;
             max-width: 400px;
             width: 100%;
             z-index: 11;
@@ -351,6 +374,7 @@ body.active {
         line-height: 94px;
         text-align: left;
         text-transform: uppercase;
+        display: inline-block;
         span {
             display: block;
         }
@@ -381,6 +405,10 @@ body.active {
         @media (max-width: 576px) {
             font-size: 32px;
             line-height: 40px;
+        }
+        @media (max-width: 480px) {
+            font-size: 28px;
+            line-height: 34px;
         }
     }
     &-img {
@@ -590,7 +618,6 @@ body.active {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    // height: 1100px;
     padding: 160px 0 120px;
     @media (max-width: 1175px) {
         margin-top: 0;
@@ -739,6 +766,9 @@ body.active {
         @media (max-width: 576px) {
             height: 96px;
         }
+        @media (max-width: 480px) {
+            height: 86px;
+        }
         &::-webkit-scrollbar {
             width: 6px;
             @media (max-width: 992px) {
@@ -786,6 +816,13 @@ body.active {
                 line-height: 20px;
                 height: 90px;
                 min-height: 90px;
+            }
+            @media (max-width: 480px) {
+                font-size: 16px;
+                line-height: 20px;
+                height: 80px;
+                min-height: 80px;
+                min-width: 120px;
             }
         }
     }
@@ -882,6 +919,9 @@ body.active {
             @media (max-width: 992px) {
                 gap: 12px;
                 line-height: 140%;
+            }
+            @media (max-width: 576px) {
+                font-size: 13px;
             }
         }
         &-about,
@@ -1052,6 +1092,56 @@ body.active {
             height: auto;
             width: 100%;
         }
+    }
+}
+
+.animate-right {
+    transform: translateX(200px);
+    transition: all 1.3s ease;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: reveal-right;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+}
+
+.animate-left {
+    transform: translateX(-200px);
+    transition: all 1.3s ease;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: reveal-left;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+}
+
+.animate-text {
+    transform: scale(0.8);
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: reveal-text;
+    animation-duration: 0.6s;
+    animation-delay: 0.2s;
+}
+
+@keyframes reveal-text {
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes reveal-right {
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes reveal-left {
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
