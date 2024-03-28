@@ -1,6 +1,8 @@
 console.log('Welcome');
 console.log('Developed by Sarkor');
 
+var currentIndex = 0;
+const featuremImg = document.querySelectorAll('.features__image-item')
 
 var swiper = new Swiper(".mySwiper", {
     direction: "vertical",
@@ -8,7 +10,30 @@ var swiper = new Swiper(".mySwiper", {
     spaceBetween: 6,
     loop: true,
     centeredSlides: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    mousewheel: true,
+    on: {
+        slideChange: function () {
+            featuremImg.forEach(el => el.classList.remove('active'));
+            featuremImg[this.realIndex].classList.add('active')
+            // currentIndex = this.realIndex + 1;
+        },
+    },
 });
+
+// var swiperIcon = new Swiper(".mySwiperIcon", {
+//     loop: true,
+//     allowTouchMove: false,
+//     effect: "fade",
+// });
+
+
+
+// swiperIcon.controller.control = swiper;
+// swiper.controller.control = swiperIcon;
 
 
 const burgerOpen = document.querySelector('.nav__open');
@@ -67,7 +92,7 @@ for (let i = 0; i < clientList.length; i++) {
             clientImgItem.setAttribute('src', clientImgList[i]);
             setTimeout(function () {
                 clientImgItem.classList.remove('active');
-            }, 200);
+            }, 50);
         }
         currentIndex = i;
     })
@@ -87,22 +112,18 @@ for (let i = 0; i < navList.length; i++) {
 
 
 let lastScrollTop = 0;
-let delta = 50; // Расстояние, на котором будет реагировать хедер
+let delta = 50;
 
 window.addEventListener('scroll', function () {
     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
     if (Math.abs(lastScrollTop - currentScroll) <= delta) {
-        return; // Не делаем ничего, если скролл недостаточный
+        return;
     }
 
     if (currentScroll > lastScrollTop) {
-        // Скролл вниз
-        // document.querySelector('.header').classList.add('active');
         document.querySelector('.header-box').classList.add('active');
     } else {
-        // Скролл вверх
-        // document.querySelector('.header').classList.remove('active');
         document.querySelector('.header-box').classList.remove('active');
     }
 
