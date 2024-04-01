@@ -19,21 +19,19 @@ var swiper = new Swiper(".mySwiper", {
         slideChange: function () {
             featuremImg.forEach(el => el.classList.remove('active'));
             featuremImg[this.realIndex].classList.add('active')
-            // currentIndex = this.realIndex + 1;
+            currentIndex = this.realIndex + 1;
         },
     },
 });
 
-// var swiperIcon = new Swiper(".mySwiperIcon", {
-//     loop: true,
-//     allowTouchMove: false,
-//     effect: "fade",
-// });
 
-
-
-// swiperIcon.controller.control = swiper;
-// swiper.controller.control = swiperIcon;
+var swiperTwo = new Swiper(".worksSwiper", {
+    spaceBetween: 20,
+    navigation: {
+        nextEl: ".works__right-right",
+        prevEl: ".works__right-left",
+    },
+});
 
 
 const burgerOpen = document.querySelector('.nav__open');
@@ -97,6 +95,22 @@ for (let i = 0; i < clientList.length; i++) {
         currentIndex = i;
     })
 }
+
+const worksBtnList = document.querySelectorAll('.works__left-item');
+const worksList = document.querySelectorAll('.works__right-inner');
+
+for (let i = 0; i < worksBtnList.length; i++) {
+    const el = worksBtnList[i];
+
+    el.addEventListener('click', () => {
+        swiperTwo.forEach(el => el.slideTo(0))
+        worksBtnList.forEach(el => el.classList.remove('active'));
+        el.classList.add('active')
+        worksList.forEach(el => el.classList.remove('active'));
+        worksList[i].classList.add('active')
+    })
+}
+
 
 
 const navList = document.querySelectorAll('.header .nav__list-link');
