@@ -164,7 +164,7 @@ body.active {
             left: 0;
             transform: translateX(-100%);
             top: 0;
-            height: 100vh;
+            height: 150vh;
             max-width: 400px;
             width: 100%;
             z-index: 11;
@@ -434,7 +434,7 @@ body.active {
     &__img {
         float: right;
         display: flex;
-        height: 1100px;
+        height: 900px;
         width: 100%;
         @media (max-width: 1175px) {
             height: 800px;
@@ -841,6 +841,7 @@ body.active {
             line-height: 24px;
             text-align: center;
             border-bottom: 1px solid var(--light-white);
+            user-select: none;
             &.active {
                 box-shadow: 0px 0px 150px 0px rgba(255, 255, 255, 0.35);
                 background: linear-gradient(157.89deg, rgb(255, 255, 255) -55.129%, rgb(114, 114, 114) 113.948%);
@@ -887,37 +888,44 @@ body.active {
             height: 120px;
             display: flex;
             align-items: center;
-            font-size: 36px;
+            font-size: 33px;
             font-weight: 700;
             line-height: 48px;
             text-align: left;
             width: 100%;
             text-transform: uppercase;
-            padding-left: 40px;
+            padding-left: 25px;
+            padding-right: 10px;
             border-bottom: 1px solid var(--light-white);
             @media (max-width: 1175px) {
-                font-size: 32px;
+                font-size: 29px;
                 line-height: 42px;
                 height: 110px;
             }
             @media (max-width: 992px) {
                 height: auto;
-                padding: 35px 0 35px 40px;
+                padding: 35px 16px 35px 40px;
             }
             @media (max-width: 768px) {
                 font-size: 24px;
                 line-height: 30px;
-                padding: 30px 0 30px 40px;
+                padding: 30px 16px 30px 40px;
             }
             @media (max-width: 576px) {
                 font-size: 20px;
-                line-height: 24px;
-                padding: 30px 0 30px 20px;
+                line-height: 28px;
+                padding: 30px 16px 30px 20px;
             }
             @media (max-width: 450px) {
                 font-size: 18px;
-                line-height: 20px;
-                padding: 30px 0 30px 16px;
+                line-height: 26px;
+                padding: 30px 16px 30px 16px;
+            }
+            h3 {
+                display: none;
+                &.active {
+                    display: block;
+                }
             }
         }
         &-box {
@@ -960,7 +968,7 @@ body.active {
             padding-bottom: 25px;
             @media (max-width: 992px) {
                 gap: 12px;
-                line-height: 140%;
+                line-height: 150%;
             }
             @media (max-width: 576px) {
                 font-size: 13px;
@@ -973,7 +981,7 @@ body.active {
                 padding: 30px 10px 0 20px;
             }
             @media (max-width: 768px) {
-                padding: 30px 10px 30px 20px;
+                padding: 20px 10px 30px 14px;
             }
         }
         &-about {
@@ -1042,17 +1050,21 @@ body.active {
             height: 100%;
             border-radius: 0px 0px 15px 0px;
             box-shadow: 0px 0px 150px 0px rgba(255, 255, 255, 0.35);
+            position: relative;
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                opacity: 1;
-                visibility: visible;
+                object-position: top;
+                opacity: 0;
+                visibility: hidden;
                 transition: 0.3s all;
+                position: absolute;
+                width: 100%;
+                height: 100%;
                 &.active {
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: 0s all;
+                    opacity: 1;
+                    visibility: visible;
                 }
             }
             @media (max-width: 1175px) {
@@ -1395,9 +1407,11 @@ body.active {
 }
 
 .offers {
-    margin-top: 240px;
+    // margin-top: 240px;
+    margin-top: 160px;
     @media (max-width: 768px) {
-        margin-top: 160px;
+        // margin-top: 160px;
+        margin-top: 70px;
     }
     &-title {
         color: var(--white);
@@ -1559,6 +1573,11 @@ body.active {
         }
         a {
             color: inherit;
+            transition: 0.2s all;
+            text-decoration: 2px underline transparent;
+            &:hover {
+                text-decoration-color: var(--white);
+            }
         }
     }
 }

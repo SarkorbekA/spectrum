@@ -174,7 +174,7 @@ body.active {
     left: 0;
     transform: translateX(-100%);
     top: 0;
-    height: 100vh;
+    height: 150vh;
     max-width: 400px;
     width: 100%;
     z-index: 11;
@@ -465,7 +465,7 @@ body.active {
 .main__img {
   float: right;
   display: flex;
-  height: 1100px;
+  height: 900px;
   width: 100%;
 }
 @media (max-width: 1175px) {
@@ -974,6 +974,9 @@ body.active {
   line-height: 24px;
   text-align: center;
   border-bottom: 1px solid var(--light-white);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .client__left-item.active {
   box-shadow: 0px 0px 150px 0px rgba(255, 255, 255, 0.35);
@@ -1032,18 +1035,19 @@ body.active {
   height: 120px;
   display: flex;
   align-items: center;
-  font-size: 36px;
+  font-size: 33px;
   font-weight: 700;
   line-height: 48px;
   text-align: left;
   width: 100%;
   text-transform: uppercase;
-  padding-left: 40px;
+  padding-left: 25px;
+  padding-right: 10px;
   border-bottom: 1px solid var(--light-white);
 }
 @media (max-width: 1175px) {
   .client__right-title {
-    font-size: 32px;
+    font-size: 29px;
     line-height: 42px;
     height: 110px;
   }
@@ -1051,29 +1055,35 @@ body.active {
 @media (max-width: 992px) {
   .client__right-title {
     height: auto;
-    padding: 35px 0 35px 40px;
+    padding: 35px 16px 35px 40px;
   }
 }
 @media (max-width: 768px) {
   .client__right-title {
     font-size: 24px;
     line-height: 30px;
-    padding: 30px 0 30px 40px;
+    padding: 30px 16px 30px 40px;
   }
 }
 @media (max-width: 576px) {
   .client__right-title {
     font-size: 20px;
-    line-height: 24px;
-    padding: 30px 0 30px 20px;
+    line-height: 28px;
+    padding: 30px 16px 30px 20px;
   }
 }
 @media (max-width: 450px) {
   .client__right-title {
     font-size: 18px;
-    line-height: 20px;
-    padding: 30px 0 30px 16px;
+    line-height: 26px;
+    padding: 30px 16px 30px 16px;
   }
+}
+.client__right-title h3 {
+  display: none;
+}
+.client__right-title h3.active {
+  display: block;
 }
 .client__right-box {
   display: flex;
@@ -1125,7 +1135,7 @@ body.active {
 @media (max-width: 992px) {
   .client__right-text {
     gap: 12px;
-    line-height: 140%;
+    line-height: 150%;
   }
 }
 @media (max-width: 576px) {
@@ -1143,7 +1153,7 @@ body.active {
 }
 @media (max-width: 768px) {
   .client__right-about, .client__right-info {
-    padding: 30px 10px 30px 20px;
+    padding: 20px 10px 30px 14px;
   }
 }
 .client__right-about {
@@ -1216,20 +1226,25 @@ body.active {
   height: 100%;
   border-radius: 0px 0px 15px 0px;
   box-shadow: 0px 0px 150px 0px rgba(255, 255, 255, 0.35);
+  position: relative;
 }
 .client__right-img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 1;
-  visibility: visible;
-  transition: 0.3s all;
-}
-.client__right-img img.active {
+  -o-object-position: top;
+     object-position: top;
   opacity: 0;
   visibility: hidden;
-  transition: 0s all;
+  transition: 0.3s all;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.client__right-img img.active {
+  opacity: 1;
+  visibility: visible;
 }
 @media (max-width: 1175px) {
   .client__right-img {
@@ -1645,11 +1660,11 @@ body.active {
 }
 
 .offers {
-  margin-top: 240px;
+  margin-top: 160px;
 }
 @media (max-width: 768px) {
   .offers {
-    margin-top: 160px;
+    margin-top: 70px;
   }
 }
 .offers-title {
@@ -1853,6 +1868,12 @@ body.active {
 }
 .contact-subtitle a {
   color: inherit;
+  transition: 0.2s all;
+  -webkit-text-decoration: 2px underline transparent;
+          text-decoration: 2px underline transparent;
+}
+.contact-subtitle a:hover {
+  text-decoration-color: var(--white);
 }
 
 .animate-right {

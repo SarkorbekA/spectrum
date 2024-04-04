@@ -62,17 +62,22 @@ filter.addEventListener('click', () => {
 const clientList = document.querySelectorAll('.client__left-item');
 const clientAboutList = document.querySelectorAll('.client__right-about');
 const clientInfoList = document.querySelectorAll('.client__right-info');
+const clientTitle = document.querySelectorAll('.client__right-title h3');
 
 
-const clientImgItem = document.querySelector('.client__right-img img');
-const clientImgList = [
-    './images/product.png',
-    'http://3.bp.blogspot.com/_E5z0Iw_Z9kQ/Sr2PgjWNiGI/AAAAAAAADxA/tybe11kmnIM/s320/P1030159.JPG',
-    './images/product.png',
-    './images/product.png',
-    './images/product.png',
-    './images/product.png',
-]
+const clientImgItem = document.querySelectorAll('.client__right-img img');
+// const clientImgList = [
+//     './images/works/2.jpg',
+//     './images/works/3.jpg',
+//     './images/works/4.jpg',
+//     './images/works/7.jpg',
+//     './images/works/1.jpg',
+//     './images/works/5.jpg',
+//     './images/works/6.jpg',
+//     './images/works/8.jpg',
+//     './images/works/9.jpg',
+//     './images/works/10.jpg',
+// ]
 
 currentIndex = 0;
 
@@ -82,17 +87,21 @@ for (let i = 0; i < clientList.length; i++) {
         clientList.forEach(el => el.classList.remove('active'));
         clientAboutList.forEach(el => el.classList.remove('active'));
         clientInfoList.forEach(el => el.classList.remove('active'));
+        clientTitle.forEach(el => el.classList.remove('active'));
+        clientImgItem.forEach(el => el.classList.remove('active'));
         el.classList.add('active')
         clientAboutList[i].classList.add('active');
         clientInfoList[i].classList.add('active');
-        if (currentIndex != i) {
-            clientImgItem.classList.add('active');
-            clientImgItem.setAttribute('src', clientImgList[i]);
-            setTimeout(function () {
-                clientImgItem.classList.remove('active');
-            }, 50);
-        }
-        currentIndex = i;
+        clientTitle[i].classList.add('active');
+        clientImgItem[i].classList.add('active');
+        // if (currentIndex != i) {
+        //     clientImgItem.classList.add('active');
+        //     clientImgItem.setAttribute('src', clientImgList[i]);
+        //     setTimeout(function () {
+        //         clientImgItem.classList.remove('active');
+        //     }, 50);
+        // }
+        // currentIndex = i;
     })
 }
 
