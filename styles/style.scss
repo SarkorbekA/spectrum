@@ -383,6 +383,9 @@ body.active {
             align-items: center;
             flex-direction: column-reverse;
         }
+        @media (max-width: 576px) {
+            flex-direction: column;
+        }
     }
     &-title {
         color: var(--white);
@@ -443,6 +446,10 @@ body.active {
             max-width: 600px;
             height: 500px;
         }
+        @media (max-width: 576px) {
+            height: auto;
+            display: none;
+        }
         @media (max-width: 480px) {
             height: auto;
         }
@@ -457,8 +464,73 @@ body.active {
             @media (max-width: 768px) {
                 transform: translateY(-70px);
             }
-            @media (max-width: 480px) {
+            @media (max-width: 576px) {
                 transform: translateY(0);
+                display: none;
+            }
+        }
+    }
+    &__top {
+        display: none;
+        @media (max-width: 576px) {
+            display: block;
+        }
+        width: 100%;
+        padding-top: 40px;
+        &-title {
+            font-family: Druk;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 48px;
+            text-align: center;
+            color: var(--white);
+            @media (max-width: 400px) {
+                font-size: 30px;
+                line-height: 42px;
+            }
+            span {
+                display: block;
+            }
+        }
+    }
+    &__bottom {
+        display: none;
+        @media (max-width: 576px) {
+            display: block;
+        }
+        &-img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            img {
+                width: 90%;
+                @media (max-width: 480px) {
+                    width: 100%;
+                }
+            }
+        }
+        &-title {
+            font-family: Druk;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+            color: var(--white);
+            @media (max-width: 400px) {
+                font-size: 20px;
+            }
+        }
+        &-subtitle {
+            text-align: center;
+            font-family: Unbounded;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 22px;
+            margin-top: 12px;
+            color: var(--white);
+            @media (max-width: 400px) {
+                font-size: 14px;
+                margin-top: 8px;
             }
         }
     }
@@ -797,6 +869,12 @@ body.active {
         overflow-y: scroll;
         position: relative;
         z-index: 1;
+        &.second {
+            display: none;
+            @media (max-width: 576px) {
+                display: flex;
+            }
+        }
         @media (max-width: 992px) {
             width: 100%;
             display: flex;
@@ -807,6 +885,7 @@ body.active {
         }
         @media (max-width: 576px) {
             height: 96px;
+            display: none;
         }
         @media (max-width: 480px) {
             height: 86px;
@@ -825,10 +904,28 @@ body.active {
                 border-radius: 12px;
             }
         }
-
-        &-item {
-            cursor: pointer;
+        .swiper {
+            width: 100%;
+            height: 100%;
+            &-slide {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px solid var(--light-white);
+            }
+        }
+        &-item{
             min-height: 120px;
+            @media (max-width: 1175px) {
+                min-height: 110px;
+            }
+            @media (max-width: 992px) {
+                min-width: 150px;
+            }
+        }
+        &-text {
+            cursor: pointer;
             height: 120px;
             width: 100%;
             display: flex;
@@ -849,23 +946,17 @@ body.active {
             }
             @media (max-width: 1175px) {
                 height: 110px;
-                min-height: 110px;
-            }
-            @media (max-width: 992px) {
-                min-width: 150px;
             }
             @media (max-width: 576px) {
                 font-size: 18px;
                 line-height: 20px;
                 height: 90px;
-                min-height: 90px;
             }
             @media (max-width: 480px) {
                 font-size: 16px;
                 line-height: 20px;
                 height: 80px;
                 min-height: 80px;
-                min-width: 120px;
             }
         }
     }

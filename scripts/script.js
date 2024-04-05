@@ -14,7 +14,6 @@ var swiper = new Swiper(".mySwiper", {
         delay: 2500,
         disableOnInteraction: false,
     },
-    mousewheel: true,
     on: {
         slideChange: function () {
             featuremImg.forEach(el => el.classList.remove('active'));
@@ -22,16 +21,35 @@ var swiper = new Swiper(".mySwiper", {
             currentIndex = this.realIndex + 1;
         },
     },
-});
-
-
-var swiperTwo = new Swiper(".worksSwiper", {
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".works__right-right",
-        prevEl: ".works__right-left",
+    allowTouchMove: false,
+    mousewheel: false,
+    breakpoints: {
+        576: {
+            allowTouchMove: true,
+            mousewheel: true,
+        },
     },
 });
+
+
+
+var swiperThree = new Swiper(".leftSwiper", {
+    spaceBetween: 0,
+    slidesPerView: 2.4,
+    breakpoints: {
+        400: {
+            slidesPerView: 3.3,
+        },
+    },
+});
+
+// var swiperTwo = new Swiper(".worksSwiper", {
+//     spaceBetween: 20,
+//     navigation: {
+//         nextEl: ".works__right-right",
+//         prevEl: ".works__right-left",
+//     },
+// });
 
 
 const burgerOpen = document.querySelector('.nav__open');
@@ -60,29 +78,19 @@ filter.addEventListener('click', () => {
 
 
 const clientList = document.querySelectorAll('.client__left-item');
+const clientListBtn = document.querySelectorAll('.client__left-el');
 const clientAboutList = document.querySelectorAll('.client__right-about');
 const clientInfoList = document.querySelectorAll('.client__right-info');
 const clientTitle = document.querySelectorAll('.client__right-title h3');
 
 
 const clientImgItem = document.querySelectorAll('.client__right-img img');
-// const clientImgList = [
-//     './images/works/2.jpg',
-//     './images/works/3.jpg',
-//     './images/works/4.jpg',
-//     './images/works/7.jpg',
-//     './images/works/1.jpg',
-//     './images/works/5.jpg',
-//     './images/works/6.jpg',
-//     './images/works/8.jpg',
-//     './images/works/9.jpg',
-//     './images/works/10.jpg',
-// ]
 
 currentIndex = 0;
 
 for (let i = 0; i < clientList.length; i++) {
     const el = clientList[i];
+    const elSecond = clientListBtn[i];
     el.addEventListener('click', () => {
         clientList.forEach(el => el.classList.remove('active'));
         clientAboutList.forEach(el => el.classList.remove('active'));
@@ -94,14 +102,18 @@ for (let i = 0; i < clientList.length; i++) {
         clientInfoList[i].classList.add('active');
         clientTitle[i].classList.add('active');
         clientImgItem[i].classList.add('active');
-        // if (currentIndex != i) {
-        //     clientImgItem.classList.add('active');
-        //     clientImgItem.setAttribute('src', clientImgList[i]);
-        //     setTimeout(function () {
-        //         clientImgItem.classList.remove('active');
-        //     }, 50);
-        // }
-        // currentIndex = i;
+    })
+    elSecond.addEventListener('click', () => {
+        clientListBtn.forEach(el => el.classList.remove('active'));
+        clientAboutList.forEach(el => el.classList.remove('active'));
+        clientInfoList.forEach(el => el.classList.remove('active'));
+        clientTitle.forEach(el => el.classList.remove('active'));
+        clientImgItem.forEach(el => el.classList.remove('active'));
+        elSecond.classList.add('active')
+        clientAboutList[i].classList.add('active');
+        clientInfoList[i].classList.add('active');
+        clientTitle[i].classList.add('active');
+        clientImgItem[i].classList.add('active');
     })
 }
 
